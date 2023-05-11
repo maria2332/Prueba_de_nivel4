@@ -25,3 +25,18 @@ for i in range(len(personajes)):
     for j in range(i, len(personajes)):
         if matriz[i][j] > 0:
             G.add_edge(personajes[i], personajes[j], weight=matriz[i][j])
+            
+# Definimos los vértices de inicio
+inicio = ["Iron Man", "Thor", "The Winter Soldier"]
+
+# Buscamos los nodos conectados a los vértices de inicio
+conectados = set()
+for v in inicio:
+    conectados |= set(nx.dfs_tree(G, v).nodes())
+
+# Aplicamos el algoritmo de Kruskal para encontrar el árbol de expansión máximo
+T = nx.algorithms.tree.maximum_spanning_tree(G.subgraph(conectados), algorithm='kruskal')
+
+# Imprimimos los nombres de los personajes en el árbol de expansión máximo
+for u, v in T.edges():
+    print(u, "-", v)
