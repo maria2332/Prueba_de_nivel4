@@ -63,3 +63,34 @@ for pair in pairs:
 
     characters = ['Iron Man', 'The increíble Hulk', 'Khan', 'Thor', 'Captain América', 'Ant-Man', 'Nick Fury', 'The Winter Soldier']
 
+characters = ['Iron Man', 'The increíble Hulk', 'Khan', 'Thor', 'Captain América', 'Ant-Man', 'Nick Fury', 'The Winter Soldier']
+adjacency_matrix = [
+    [6, 0, 1, 8, 7, 3, 2, 6],
+    [0, 6, 0, 6, 9, 1, 9, 0],
+    [1, 0, 0, 1, 2, 1, 5, 1],
+    [8, 6, 1, 0, 1, 5, 9, 3],
+    [7, 9, 2, 1, 0, 2, 4, 5],
+    [3, 1, 1, 5, 2, 0, 1, 6],
+    [2, 9, 5, 9, 4, 1, 0, 1],
+    [6, 0, 1, 3, 5, 6, 1, 0]
+]
+
+# Crear un diccionario para contar el número de veces que cada personaje aparece en una arista
+appearance_count = {}
+for i in range(len(characters)):
+    appearance_count[characters[i]] = 0
+    for j in range(i, len(characters)):
+        if i == j:
+            appearance_count[characters[i]] += adjacency_matrix[i][j]
+        else:
+            appearance_count[characters[i]] += adjacency_matrix[i][j]
+            appearance_count[characters[j]] += adjacency_matrix[i][j]
+
+# Identificar los personajes que aparecen en nueve aristas
+characters_with_nine_appearances = []
+for character, count in appearance_count.items():
+    if count == 9:
+        characters_with_nine_appearances.append(character)
+
+print("Los siguientes personajes aparecieron en nueve episodios de la saga:")
+print(characters_with_nine_appearances)
