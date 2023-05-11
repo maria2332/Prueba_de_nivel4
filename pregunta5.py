@@ -60,3 +60,6 @@ print(f"El número máximo de episodios compartidos por dos personajes es {max_e
 print("Los pares de personajes que coinciden con dicho número son:")
 for pair in pairs:
     print(f"{pair[0]} y {pair[1]}")
+
+    characters = ['Iron Man', 'The increíble Hulk', 'Khan', 'Thor', 'Captain América', 'Ant-Man', 'Nick Fury', 'The Winter Soldier']
+
